@@ -936,7 +936,7 @@ function renderWishes(snapshot){
       del.title = 'حذف هذه التهنئة';
       del.addEventListener('click', async ()=>{
         if(confirm('هل تريد حذف هذه التهنئة؟')){
-          await deleteDoc(doc(db, 'wishes', docSnap.id));
+          await deleteDoc(doc(db, 'wishes_khalil', docSnap.id));
         }
       });
       card.appendChild(del);
@@ -955,7 +955,7 @@ function renderWishes(snapshot){
   });
 }
 
-const wishesQuery = query(collection(db, 'wishes'), orderBy('createdAt', 'desc'));
+const wishesQuery = query(collection(db, 'wishes_khalil'), orderBy('createdAt', 'desc'));
 onSnapshot(wishesQuery, renderWishes);
 
 wishForm.addEventListener('submit', async (e)=>{
@@ -965,7 +965,7 @@ wishForm.addEventListener('submit', async (e)=>{
   if(!name || !wish) return;
 
   try{
-    await addDoc(collection(db, 'wishes'), {
+    await addDoc(collection(db, 'wishes_khalil'), {
       name, wish, createdAt: serverTimestamp()
     });
     wishForm.reset();
