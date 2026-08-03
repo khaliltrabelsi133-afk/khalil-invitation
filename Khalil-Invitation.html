@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خليل & سيرين | دعوة زفاف</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Almarai:wght@300;400;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f4efe4;
+    --cream-2:#efe8d9;
+    --ink:#2b2420;
+    --wine:#5e1a22;
+    --wine-deep:#3f1015;
+    --gold:#a9822f;
+    --gold-soft:#c9a35d;
+    --rose:#8c2430;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Almarai',sans-serif;
+    overflow-x:hidden;
+    overflow-y:hidden;
+    position:relative;
+  }
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(140,36,48,0.05), transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(169,130,47,0.07), transparent 45%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* petals */
+  /* candle glow ambience */
+  .candle-glow{
+    position:fixed;
+    z-index:1;
+    pointer-events:none;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(255,183,94,0.35) 0%, rgba(255,183,94,0.12) 40%, transparent 70%);
+    filter:blur(6px);
+    animation:flicker 4.5s ease-in-out infinite;
+  }
+  @keyframes flicker{
+    0%,100%{opacity:0.55;transform:scale(1);}
+    25%{opacity:0.75;transform:scale(1.05);}
+    50%{opacity:0.45;transform:scale(0.97);}
+    75%{opacity:0.7;transform:scale(1.03);}
+  }
+
+  .petal{
+    position:fixed;
+    top:-40px;
+    z-index:1;
+    pointer-events:none;
+    opacity:0.55;
+    animation:fall linear infinite;
+  }
+  @keyframes fall{
+    0%{transform:translateY(-5vh) translateX(0) rotate(0deg);opacity:0;}
+    10%{opacity:0.6;}
+    100%{transform:translateY(105vh) translateX(30px) rotate(300deg);opacity:0;}
+  }
+
+  section{
+    position:relative;
+    z-index:2;
+    max-width:640px;
+    margin:0 auto;
+    padding:70px 26px;
+  }
+
+  /* HERO */
+  .hero{
+    text-align:center;
+    padding-top:60px;
+  }
+  .monogram{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-size:64px;
+    letter-spacing:2px;
+    color:var(--wine);
+    position:relative;
+    display:inline-block;
+  }
+  .monogram::after{
+    content:"";
+    display:block;
+    width:1px;height:38px;
+    background:linear-gradient(var(--gold),transparent);
+    margin:10px auto 0;
+  }
+  .eyebrow{
+    font-size:15px;
+    letter-spacing:4px;
+    color:var(--gold);
+    margin-top:22px;
+    font-family:'Aref Ruqaa',serif;
+  }
+  .names{
+    font-family:'Aref Ruqaa',serif;
+    font-weight:700;
+    font-size:58px;
+    margin-top:14px;
+    color:var(--ink);
+    line-height:1.3;
+  }
+  .names .amp{
+    color:var(--rose);
+    font-size:34px;
+    padding:0 10px;
+  }
+  .date-line{
+    font-family:'Amiri',serif;
+    margin-top:18px;
+    font-size:17px;
+    letter-spacing:2px;
+    color:var(--wine);
+  }
+
+  .frame-wrap{
+    position:relative;
+    max-width:340px;
+    margin:44px auto 0;
+    padding:34px 10px;
+  }
+  .frame-wrap svg{position:absolute;inset:0;width:100%;height:100%;}
+  .cal-title{font-family:'Aref Ruqaa',serif;font-size:20px;color:var(--ink);text-align:center;letter-spacing:3px;}
+  table.cal{width:80%;margin:14px auto 0;border-collapse:collapse;font-size:12px;text-align:center;color:#6b6259;}
+  table.cal th{font-weight:500;padding-bottom:6px;font-size:10px;letter-spacing:1px;}
+  table.cal td{padding:4px 0;}
+  table.cal td.marked{position:relative;color:var(--rose);font-weight:700;}
+  table.cal td.marked::after{
+    content:"♥";
+    position:absolute;
+    top:-11px;left:50%;transform:translateX(-50%) rotate(-8deg);
+    font-size:10px;color:var(--rose);
+  }
+  table.cal td.marked-hat{position:relative;color:#3f3428;font-weight:700;}
+  table.cal td.marked-hat::after{
+    content:"🎩";
+    position:absolute;
+    top:-15px;left:50%;transform:translateX(-50%);
+    font-size:12px;
+  }
+  table.cal td.marked-dress{position:relative;color:var(--rose);font-weight:700;}
+  table.cal td.marked-dress::after{
+    content:"👗";
+    position:absolute;
+    top:-15px;left:50%;transform:translateX(-50%);
+    font-size:12px;
+  }
+  .save-date{
+    text-align:center;font-family:'Aref Ruqaa',serif;
+    letter-spacing:4px;font-size:13px;color:#6b6259;margin-top:18px;
+  }
+
+  /* COUNTDOWN */
+  .countdown{
+    display:flex;justify-content:center;gap:14px;margin-top:46px;flex-wrap:wrap;
+  }
+  .cd-box{
+    background:var(--cream-2);
+    border:1px solid rgba(169,130,47,0.35);
+    border-radius:4px;
+    width:74px;padding:14px 0;
+    text-align:center;
+  }
+  .cd-num{font-family:'Aref Ruqaa',serif;font-size:26px;color:var(--wine);}
+  .cd-label{font-size:10px;letter-spacing:1px;color:#8a8074;margin-top:4px;}
+
+  /* TOGGLE */
+  .invite-tag{
+    text-align:center;
+    font-family:'Aref Ruqaa',serif;
+    font-size:14px;
+    letter-spacing:3px;
+    color:var(--gold);
+    margin-bottom:18px;
+  }
+
+  .toggle-wrap{text-align:center;margin-top:56px;}
+  .toggle-label{font-size:12px;letter-spacing:3px;color:#8a8074;margin-bottom:14px;text-transform:uppercase;}
+  .toggle{
+    display:inline-flex;
+    background:var(--cream-2);
+    border-radius:40px;
+    padding:5px;
+    border:1px solid rgba(169,130,47,0.3);
+  }
+  .toggle button{
+    font-family:'Aref Ruqaa',serif;
+    font-size:17px;
+    padding:9px 26px;
+    border:none;
+    background:transparent;
+    color:#8a8074;
+    border-radius:40px;
+    cursor:pointer;
+    transition:all .4s ease;
+  }
+  .toggle button.active{
+    background:var(--wine);
+    color:var(--cream);
+    box-shadow:0 4px 14px rgba(94,26,34,0.3);
+  }
+
+  /* INVITATION CARD (flip) */
+  .card-stage{
+    perspective:1600px;
+    margin-top:34px;
+  }
+  .card{
+    position:relative;
+    background:var(--cream-2);
+    border:1px solid rgba(169,130,47,0.4);
+    padding:44px 28px 36px;
+    text-align:center;
+    transition:transform .7s cubic-bezier(.4,.2,.2,1), opacity .5s ease;
+    box-shadow:0 20px 50px -20px rgba(63,16,21,0.25);
+  }
+  .card.flipping{transform:rotateY(90deg);opacity:0;}
+  .bismillah{
+    font-family:'Aref Ruqaa',serif;
+    font-weight:700;
+    font-size:26px;
+    color:var(--wine);
+    margin-bottom:24px;
+    letter-spacing:1px;
+  }
+  .ayah{
+    font-family:'Amiri',serif;
+    font-size:16px;
+    line-height:2.4;
+    color:#4a4236;
+    padding:0 4px;
+  }
+  .ayah-ref{
+    font-family:'Amiri',serif;
+    font-style:italic;
+    font-size:13px;color:var(--gold);letter-spacing:1px;margin-top:10px;
+  }
+  .divider{
+    width:auto;height:auto;background:none;margin:24px auto;
+    text-align:center;
+    color:var(--gold-soft);
+    font-size:13px;
+    letter-spacing:8px;
+  }
+  .divider::before{content:"◆ ✦ ◆";}
+  .blessing{
+    font-family:'Aref Ruqaa',serif;
+    font-size:16px;color:var(--gold);letter-spacing:2px;
+  }
+  .family-line{
+    font-family:'Amiri',serif;
+    font-size:17px;
+    line-height:2.2;
+    margin-top:16px;
+    color:var(--ink);
+  }
+  .invite-verb{font-size:13px;color:#8a8074;margin-top:10px;}
+  .child-name{
+    font-family:'Aref Ruqaa',serif;
+    font-weight:700;
+    font-size:52px;
+    color:var(--rose);
+    margin-top:18px;
+    text-shadow:0 1px 0 rgba(140,36,48,0.15);
+  }
+  .together-name{
+    font-family:'Aref Ruqaa',serif;
+    font-weight:700;
+    font-size:44px;
+    color:var(--rose);
+    margin-top:18px;
+  }
+  .together-name .amp{color:var(--gold);font-size:26px;padding:0 8px;}
+  .detail-block{
+    font-family:'Amiri',serif;
+    margin-top:28px;font-size:17px;line-height:2.3;color:var(--ink);
+  }
+  .detail-block b{color:var(--wine);font-weight:700;}
+  .venue{
+    margin-top:20px;
+    font-family:'Aref Ruqaa',serif;
+    font-weight:700;
+    font-size:21px;
+    color:var(--ink);
+  }
+  .venue small{display:block;font-family:'Almarai',sans-serif;font-size:12px;color:#8a8074;margin-top:4px;letter-spacing:1px;}
+  .closing{
+    font-family:'Aref Ruqaa',serif;
+    margin-top:26px;font-size:15px;color:var(--gold);letter-spacing:1px;
+  }
+  .card::before, .card::after{
+    content:"";
+    position:absolute;
+    width:26px;height:26px;
+    border:1px solid var(--gold-soft);
+  }
+  .card::before{top:10px;right:10px;border-left:none;border-bottom:none;}
+  .card::after{bottom:10px;left:10px;border-right:none;border-top:none;}
+
+  .actions{
+    display:flex;gap:10px;justify-content:center;margin-top:26px;flex-wrap:wrap;
+  }
+  .btn{
+    font-family:'Almarai',sans-serif;
+    font-size:13px;
+    letter-spacing:1px;
+    padding:11px 20px;
+    border-radius:30px;
+    border:1px solid var(--wine);
+    background:transparent;
+    color:var(--wine);
+    cursor:pointer;
+    text-decoration:none;
+    display:inline-flex;align-items:center;gap:6px;
+    transition:background .3s, color .3s, transform .2s;
+  }
+  .btn:hover{background:var(--wine);color:var(--cream);transform:translateY(-2px);}
+  .btn.filled{background:var(--wine);color:var(--cream);}
+  .btn.filled:hover{background:var(--wine-deep);}
+
+  /* JOINT WEDDING SECTION */
+  .joint{
+    margin-top:70px;
+    text-align:center;
+  }
+  .joint-tag{
+    font-family:'Aref Ruqaa',serif;
+    font-size:20px;letter-spacing:3px;color:var(--gold);margin-bottom:10px;
+  }
+  .joint-sub{font-family:'Almarai',sans-serif;font-size:13px;color:#8a8074;margin-bottom:26px;}
+
+  footer{
+    text-align:center;
+    padding:50px 20px 70px;
+    font-size:11px;letter-spacing:2px;color:#a89d8c;
+  }
+
+  /* WISH BOX */
+  .wishes{margin-top:70px;text-align:center;}
+  .wishes-tag{font-size:12px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;}
+  .wishes-title{font-family:'Aref Ruqaa',serif;font-weight:700;font-size:26px;color:var(--ink);margin-bottom:8px;}
+  .wishes-sub{font-family:'Almarai',sans-serif;font-size:13px;color:#8a8074;margin-bottom:24px;}
+  .wish-form{
+    background:var(--cream-2);
+    border:1px solid rgba(169,130,47,0.4);
+    padding:30px 24px;
+    text-align:right;
+    box-shadow:0 20px 50px -20px rgba(63,16,21,0.2);
+  }
+  .wish-form label{
+    display:block;font-family:'Almarai',sans-serif;font-size:12px;color:var(--wine);letter-spacing:1px;margin-bottom:6px;
+  }
+  .wish-form input, .wish-form textarea{
+    width:100%;
+    font-family:'Almarai',sans-serif;
+    font-size:14px;
+    padding:11px 14px;
+    border:1px solid rgba(169,130,47,0.4);
+    background:var(--cream);
+    color:var(--ink);
+    border-radius:4px;
+    margin-bottom:16px;
+    resize:vertical;
+  }
+  .wish-form textarea{min-height:90px;}
+  .wish-form input:focus, .wish-form textarea:focus{outline:none;border-color:var(--wine);}
+  .wish-send{
+    width:100%;
+    font-family:'Aref Ruqaa',serif;
+    font-size:16px;
+    padding:13px 0;
+    border:none;
+    border-radius:30px;
+    background:#25D366;
+    color:#fff;
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    transition:transform .2s ease, background .3s ease;
+  }
+  .wish-send:hover{transform:translateY(-2px);background:#1ebe5a;}
+  .wish-send svg{width:18px;height:18px;fill:#fff;}
+  .wish-note{margin-top:12px;font-size:11px;color:#a89d8c;}
+
+  .wishes-wall{margin-top:30px;display:flex;flex-direction:column;gap:12px;}
+  .wish-card{
+    background:var(--cream-2);
+    border-right:3px solid var(--gold-soft);
+    padding:14px 18px;
+    text-align:right;
+    animation:wishIn .5s ease both;
+  }
+  @keyframes wishIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+  .wish-card .wname{font-family:'Aref Ruqaa',serif;font-size:16px;color:var(--wine);}
+  .wish-card .wtext{font-family:'Almarai',sans-serif;font-size:13px;color:var(--ink);margin-top:4px;line-height:1.7;}
+
+  .admin-lock{
+    margin-top:30px;
+    background:none;border:none;
+    font-size:17px;
+    opacity:0.3;
+    cursor:pointer;
+    transition:opacity .3s ease;
+  }
+  .admin-lock:hover{opacity:0.7;}
+  .admin-panel{
+    display:none;
+    flex-direction:column;
+    gap:8px;
+    max-width:260px;
+    margin:14px auto 0;
+  }
+  .admin-panel.open{display:flex;}
+  .admin-panel input{
+    font-family:'Almarai',sans-serif;font-size:13px;
+    padding:9px 12px;
+    border:1px solid rgba(169,130,47,0.4);
+    background:var(--cream);
+    border-radius:4px;
+    color:var(--ink);
+  }
+  .admin-panel button{
+    font-family:'Almarai',sans-serif;font-size:13px;
+    padding:9px 0;border:none;border-radius:20px;
+    background:var(--wine);color:var(--cream);cursor:pointer;
+  }
+  .admin-msg{font-size:11px;color:var(--gold);min-height:14px;}
+
+  .wish-card{position:relative;}
+  .wish-del{
+    position:absolute;
+    top:8px;left:10px;
+    background:none;border:none;
+    color:var(--rose);
+    font-size:13px;
+    cursor:pointer;
+    display:none;
+    opacity:0.6;
+  }
+  .wish-del:hover{opacity:1;}
+  .wishes-wall.admin-mode .wish-del{display:block;}
+
+  @media (max-width:420px){
+    .names{font-size:42px;}
+    .child-name{font-size:36px;}
+    .together-name{font-size:32px;}
+    .monogram{font-size:50px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* MUSIC TOGGLE */
+  .music-btn{
+    position:fixed;
+    top:18px;
+    left:18px;
+    z-index:50;
+    width:46px;height:46px;
+    border-radius:50%;
+    background:var(--cream-2);
+    border:1px solid rgba(169,130,47,0.5);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    box-shadow:0 6px 18px -6px rgba(63,16,21,0.35);
+    transition:transform .3s ease, background .3s ease;
+  }
+  .music-btn:hover{transform:scale(1.06);}
+  .music-btn svg{width:19px;height:19px;stroke:var(--wine);fill:none;stroke-width:1.6;}
+  .music-btn.playing{background:var(--wine);}
+  .music-btn.playing svg{stroke:var(--cream);}
+  .music-bars{display:none;position:absolute;bottom:6px;left:50%;transform:translateX(-50%);gap:2px;}
+  .music-btn.playing .music-bars{display:flex;}
+
+  /* ENTER GATE */
+  .gate{
+    position:fixed;inset:0;z-index:100;
+    background:var(--cream);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;
+    cursor:pointer;
+    transition:opacity .8s ease, visibility .8s ease;
+  }
+  .gate.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+  .gate-monogram{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:60px;color:var(--wine);
+  }
+  .gate-names{
+    font-family:'Aref Ruqaa',serif;font-weight:700;font-size:34px;
+    margin-top:14px;color:var(--ink);
+  }
+  .gate-names .amp{color:var(--rose);font-size:22px;padding:0 8px;}
+  .gate-hint{
+    margin-top:34px;
+    font-family:'Almarai',sans-serif;
+    font-size:13px;letter-spacing:2px;color:var(--gold);
+  }
+  .gate-ring{
+    margin-top:22px;
+    width:64px;height:64px;border-radius:50%;
+    border:1px solid var(--gold-soft);
+    display:flex;align-items:center;justify-content:center;
+    animation:pulseRing 2.2s ease-in-out infinite;
+  }
+  .gate-ring svg{width:22px;height:22px;stroke:var(--wine);fill:none;stroke-width:1.5;}
+  @keyframes pulseRing{
+    0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(169,130,47,0.18);}
+    50%{transform:scale(1.06);box-shadow:0 0 0 10px rgba(169,130,47,0);}
+  }
+
+  /* FOUNTAIN */
+  .fountain-scene{text-align:center;padding-top:10px;}
+  .fountain-tag{font-family:'Aref Ruqaa',serif;font-size:15px;letter-spacing:3px;color:var(--gold);margin-bottom:14px;}
+  .fountain-svg{width:220px;height:auto;}
+  .water-stream{
+    fill:none;
+    stroke:#7ea8ad;
+    stroke-width:2.2;
+    stroke-linecap:round;
+    opacity:0.75;
+    stroke-dasharray:6 10;
+    animation:flow 1.1s linear infinite;
+  }
+  .water-stream.s2{animation-duration:1.3s;opacity:0.55;}
+  .water-stream.s3{animation-duration:0.95s;opacity:0.65;}
+  @keyframes flow{ to{ stroke-dashoffset:-32; } }
+  .ripple{
+    fill:none;
+    stroke:#7ea8ad;
+    stroke-width:1;
+    opacity:0;
+    transform-origin:170px 118px;
+    animation:ripple 2.6s ease-out infinite;
+  }
+  .ripple.r2{animation-delay:0.9s;}
+  .ripple.r3{animation-delay:1.8s;}
+  @keyframes ripple{
+    0%{opacity:0.55;transform:scale(0.4);}
+    100%{opacity:0;transform:scale(1.6);}
+  }
+  .droplet{
+    fill:#a9c7ca;
+    opacity:0;
+    animation:drop 1.4s ease-in infinite;
+  }
+  .droplet.d2{animation-delay:0.45s;}
+  .droplet.d3{animation-delay:0.9s;}
+  @keyframes drop{
+    0%{opacity:0;transform:translateY(0);}
+    15%{opacity:0.9;}
+    85%{opacity:0.4;}
+    100%{opacity:0;transform:translateY(26px);}
+  }
+  .music-bars span{
+    width:2px;background:var(--cream);border-radius:1px;
+    animation:bar 0.9s ease-in-out infinite;
+  }
+  .music-bars span:nth-child(1){height:4px;animation-delay:0s;}
+  .music-bars span:nth-child(2){height:8px;animation-delay:.15s;}
+  .music-bars span:nth-child(3){height:5px;animation-delay:.3s;}
+  @keyframes bar{0%,100%{transform:scaleY(0.6);}50%{transform:scaleY(1.3);}}
+</style>
+</head>
+<body>
+
+<div class="gate" id="gate">
+  <div class="gate-monogram">K̃S</div>
+  <div class="gate-names">خليل <span class="amp">&</span> سيرين</div>
+  <div class="gate-hint">اضغط للدخول إلى الدعوة</div>
+  <div class="gate-ring">
+    <svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+  </div>
+</div>
+
+<iframe id="yt-audio" style="position:fixed;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;border:0;" allow="autoplay; encrypted-media" title="background music"></iframe>
+
+<button class="music-btn" id="music-btn" aria-label="تشغيل الموسيقى" title="موسيقى خلفية">
+  <svg id="music-icon" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+  <span class="music-bars"><span></span><span></span><span></span></span>
+</button>
+
+<div class="candle-glow" style="width:220px;height:220px;top:5%;left:-40px;animation-delay:0s;"></div>
+<div class="candle-glow" style="width:260px;height:260px;top:40%;right:-60px;animation-delay:1.2s;"></div>
+<div class="candle-glow" style="width:200px;height:200px;top:75%;left:-30px;animation-delay:2.4s;"></div>
+<div class="candle-glow" style="width:240px;height:240px;top:95%;right:-50px;animation-delay:0.8s;"></div>
+
+<div id="petals"></div>
+
+<section class="hero">
+  <div class="monogram">K̃S</div>
+  <div class="eyebrow">دعوة زفاف</div>
+  <div class="names">خليل <span class="amp">&</span> سيرين</div>
+  <div class="date-line">الأحد 23 أوت 2026</div>
+
+  <div class="frame-wrap">
+    <svg viewBox="0 0 340 300" preserveAspectRatio="none">
+      <rect x="14" y="6" width="300" height="288" fill="none" stroke="#c9a35d" stroke-width="1" transform="rotate(-2 164 150)"/>
+      <rect x="20" y="14" width="300" height="288" fill="none" stroke="#c9a35d" stroke-width="1" transform="rotate(2 170 158)"/>
+      <rect x="10" y="10" width="320" height="280" fill="none" stroke="#c9a35d" stroke-width="1"/>
+    </svg>
+    <div class="cal-title">AUGUST</div>
+    <table class="cal">
+      <tr><th>SUN</th><th>MON</th><th>TUE</th><th>WED</th><th>THU</th><th>FRI</th><th>SAT</th></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+      <tr><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td></tr>
+      <tr><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td></tr>
+      <tr><td>16</td><td>17</td><td>18</td><td>19</td><td class="marked-dress">20</td><td>21</td><td class="marked-hat">22</td></tr>
+      <tr><td class="marked">23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td></tr>
+      <tr><td>30</td><td>31</td></tr>
+    </table>
+    <div class="save-date">SAVE THE DATE</div>
+  </div>
+
+  <div class="countdown" id="countdown">
+    <div class="cd-box"><div class="cd-num" id="cd-d">--</div><div class="cd-label">يوم</div></div>
+    <div class="cd-box"><div class="cd-num" id="cd-h">--</div><div class="cd-label">ساعة</div></div>
+    <div class="cd-box"><div class="cd-num" id="cd-m">--</div><div class="cd-label">دقيقة</div></div>
+    <div class="cd-box"><div class="cd-num" id="cd-s">--</div><div class="cd-label">ثانية</div></div>
+  </div>
+</section>
+
+<section class="fountain-scene">
+  <div class="fountain-tag">✦ ✦ ✦</div>
+  <svg class="fountain-svg" viewBox="0 0 340 200">
+    <!-- basin -->
+    <ellipse cx="170" cy="150" rx="95" ry="20" fill="#efe8d9" stroke="#c9a35d" stroke-width="1.5"/>
+    <ellipse cx="170" cy="150" rx="70" ry="12" fill="#dfe9ea" opacity="0.6"/>
+    <!-- ripples inside basin -->
+    <ellipse class="ripple r1" cx="170" cy="150" rx="30" ry="7"/>
+    <ellipse class="ripple r2" cx="170" cy="150" rx="30" ry="7"/>
+    <ellipse class="ripple r3" cx="170" cy="150" rx="30" ry="7"/>
+    <!-- pedestal -->
+    <path d="M155 150 C150 110 150 90 160 65 L180 65 C190 90 190 110 185 150 Z" fill="#efe8d9" stroke="#c9a35d" stroke-width="1.2"/>
+    <!-- upper bowl -->
+    <ellipse cx="170" cy="62" rx="34" ry="9" fill="#efe8d9" stroke="#c9a35d" stroke-width="1.5"/>
+    <ellipse cx="170" cy="60" rx="24" ry="6" fill="#dfe9ea" opacity="0.7"/>
+    <!-- water streams arching from bowl to basin -->
+    <path class="water-stream s1" d="M150 60 C120 90, 110 120, 118 145"/>
+    <path class="water-stream s2" d="M170 58 C170 90, 170 120, 170 142"/>
+    <path class="water-stream s3" d="M190 60 C220 90, 230 120, 222 145"/>
+    <!-- droplets -->
+    <circle class="droplet d1" cx="120" cy="118" r="2.2"/>
+    <circle class="droplet d2" cx="170" cy="112" r="2.4"/>
+    <circle class="droplet d3" cx="220" cy="118" r="2.2"/>
+  </svg>
+</section>
+
+<section>
+  <div class="invite-tag" id="invite-tag"></div>
+  <div class="card-stage">
+    <div class="card" id="card">
+      <!-- content injected by JS -->
+    </div>
+  </div>
+</section>
+
+<section class="joint" id="joint-card">
+  <div class="joint-tag">معاً</div>
+  <div class="joint-sub">حفل الزفاف المشترك — يتشرف الجميع بدعوتكم</div>
+  <div class="card-stage">
+    <div class="card">
+      <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+      <div class="ayah">
+        وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِقَوْمٍ يَتَفَكَّرُونَ
+      </div>
+      <div class="ayah-ref">[ الروم : 21 ]</div>
+      <div class="divider"></div>
+      <div class="blessing">على بركة الله</div>
+      <div class="family-line">تتشرف عائلتا السيد فتحي الطرابلسي و السيد منير العوني<br>بدعوتكم لحضور حفل زفاف إبنيهما</div>
+      <div class="together-name">خليل <span class="amp">&</span> سيرين</div>
+      <div class="detail-block">
+        الأحد <b>23 أوت 2026</b><br>
+        ابتداءً من الساعة <b>9 مساءً</b>
+      </div>
+      <div class="venue">قاعة الأفراح نادي قوات الأمن<br><small>سكرة</small></div>
+      <div class="closing">أفراحنا تزدان بحضوركم</div>
+      <div class="actions">
+        <a class="btn filled" id="cal-joint" href="#">أضف إلى التقويم</a>
+        <a class="btn" id="map-joint" href="#" target="_blank" rel="noopener">الموقع</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wishes">
+  <div class="wishes-tag">Guest Book</div>
+  <div class="wishes-title">اترك لنا تهنئتك</div>
+  <div class="wishes-sub">اكتب اسمك وأمنياتك للعروسين، وستظهر هنا لكل الزوار مباشرة</div>
+  <form class="wish-form" id="wishForm">
+    <label for="wish-name">الاسم</label>
+    <input type="text" id="wish-name" placeholder="اسمك الكريم" required>
+    <label for="wish-text">تهنئتك أو أمنياتك</label>
+    <textarea id="wish-text" placeholder="اكتب هنا أطيب أمنياتك للعروسين..." required></textarea>
+    <button type="submit" class="wish-send" id="wish-send">
+      <svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+      إضافة تهنئتي
+    </button>
+    <div class="wish-note">تظهر أمنياتك مباشرة لكل الحضور في لوحة التهاني</div>
+  </form>
+
+  <div class="wishes-wall" id="wishesWall"></div>
+
+  <button class="admin-lock" id="adminLockBtn" title="دخول العروسين">🔒</button>
+  <div class="admin-panel" id="adminPanel">
+    <input type="email" id="adminEmail" placeholder="البريد الإلكتروني">
+    <input type="password" id="adminPass" placeholder="كلمة المرور">
+    <button type="button" id="adminLoginBtn">دخول</button>
+    <div class="admin-msg" id="adminMsg"></div>
+  </div>
+</section>
+
+
+
+<footer>KHALIL &amp; SYRINE · 23.08.2026</footer>
+
+<script>
+/* ---------- background music (starts on the gate tap = guaranteed real user gesture) ---------- */
+const YT_VIDEO_ID = 'cNGjD0VG4R8';
+const ytFrame = document.getElementById('yt-audio');
+const musicBtn = document.getElementById('music-btn');
+const gate = document.getElementById('gate');
+let soundOn = false;
+
+function ytSrc(muted){
+  return `https://www.youtube.com/embed/${YT_VIDEO_ID}?autoplay=1&mute=${muted?1:0}&loop=1&playlist=${YT_VIDEO_ID}&controls=0&modestbranding=1&rel=0&playsinline=1`;
+}
+
+function playWithSound(){
+  ytFrame.src = ytSrc(false);
+  soundOn = true;
+  musicBtn.classList.add('playing');
+  musicBtn.setAttribute('aria-label','إيقاف الموسيقى');
+}
+
+function muteOnly(){
+  ytFrame.src = ytSrc(true);
+  soundOn = false;
+  musicBtn.classList.remove('playing');
+  musicBtn.setAttribute('aria-label','تشغيل الموسيقى');
+}
+
+function openInvitation(){
+  playWithSound();          // created inside the real tap event, so browsers allow sound
+  gate.classList.add('hidden');
+  document.body.style.overflow = 'auto';
+}
+
+gate.addEventListener('click', openInvitation, { once:true });
+gate.addEventListener('touchend', openInvitation, { once:true });
+
+// manual toggle via the floating music button, any time after entering
+musicBtn.addEventListener('click', ()=>{
+  if(!ytFrame.src){ playWithSound(); return; } // gate was somehow skipped
+  if(soundOn){ muteOnly(); } else { playWithSound(); }
+});
+
+/* ---------- petals ---------- */
+const petalHost = document.getElementById('petals');
+const petalCount = 14;
+for(let i=0;i<petalCount;i++){
+  const p = document.createElement('div');
+  p.className='petal';
+  p.style.left = Math.random()*100+'vw';
+  p.style.fontSize = (10+Math.random()*14)+'px';
+  p.style.animationDuration = (14+Math.random()*12)+'s';
+  p.style.animationDelay = (Math.random()*14)+'s';
+  p.innerHTML = Math.random()>0.5 ? '❀' : '✿';
+  p.style.color = Math.random()>0.5 ? '#8c2430' : '#c9a35d';
+  petalHost.appendChild(p);
+}
+
+/* ---------- countdown ---------- */
+const target = new Date('2026-08-23T21:00:00');
+function tick(){
+  const now = new Date();
+  let diff = target - now;
+  if(diff < 0) diff = 0;
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor((diff%86400000)/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  const s = Math.floor((diff%60000)/1000);
+  document.getElementById('cd-d').textContent = d;
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+}
+tick();
+setInterval(tick,1000);
+
+/* ---------- invitation data ---------- */
+const invites = {
+  khalil: {
+    verb:'يتشرف السيد فتحي الطرابلسي و حرمه السيدة سميرة الدريدي<br>بدعوتكم لحضور حنة وعشاء إبنهما المصون',
+    name:'خليل',
+    day:'السبت', date:'22 أوت 2026', time:'7:30 مساءً',
+    venue:'قاعة الأفراح "L\'OPÉRA"', place:'المنيهلة',
+    calStart:'20260822T193000', calEnd:'20260822T233000',
+    mapLink:'https://maps.app.goo.gl/n3RdxbKsHKskT1JV7'
+  },
+  syrine: {
+    verb:'يتشرف السيد منير العوني و حرمه السيدة كريمة الملوكي<br>بدعوتكم لحضور وطية وعشاء إبنتهما المصون',
+    name:'سيرين',
+    day:'الخميس', date:'20 أوت 2026', time:'7:30 مساءً',
+    venue:'قاعة الأفراح "L\'OPÉRA"', place:'المنيهلة',
+    calStart:'20260820T193000', calEnd:'20260820T233000',
+    mapLink:'https://maps.app.goo.gl/n3RdxbKsHKskT1JV7'
+  }
+};
+
+function calLink(title, start, end, location){
+  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${start}/${end}&location=${encodeURIComponent(location)}`;
+}
+
+function render(key){
+  const inv = invites[key];
+  const card = document.getElementById('card');
+  card.innerHTML = `
+    <div class="bismillah">${key==='khalil' ? 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ' : 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ'}</div>
+    <div class="ayah">
+      وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِقَوْمٍ يَتَفَكَّرُونَ
+    </div>
+    <div class="ayah-ref">[ الروم : 21 ]</div>
+    <div class="divider"></div>
+    <div class="blessing">على بركة الله</div>
+    <div class="family-line">${inv.verb}</div>
+    <div class="child-name">${inv.name}</div>
+    <div class="detail-block">
+      ${inv.day} <b>${inv.date}</b><br>
+      ابتداءً من الساعة <b>${inv.time}</b>
+    </div>
+    <div class="venue">${inv.venue}<br><small>${inv.place}</small></div>
+    <div class="closing">ولكم العاقبة في الأفراح و المسرات</div>
+    <div class="actions">
+      <a class="btn filled" href="${calLink('دعوة '+inv.name+' - خليل و سيرين', inv.calStart, inv.calEnd, inv.venue+' - '+inv.place)}" target="_blank" rel="noopener">أضف إلى التقويم</a>
+      <a class="btn" href="${inv.mapLink}" target="_blank" rel="noopener">الموقع</a>
+    </div>
+  `;
+}
+
+/* joint card links */
+document.getElementById('cal-joint').href = calLink('حفل زفاف خليل و سيرين','20260823T210000','20260824T020000','قاعة الأفراح نادي قوات الأمن - سكرة');
+document.getElementById('map-joint').href = 'https://maps.app.goo.gl/QEVGFkjaehhSb9B96';
+
+document.getElementById('invite-tag').textContent = 'دعوة أهل العريس';
+render('khalil');
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+import {
+  getFirestore, collection, addDoc, onSnapshot, query, orderBy,
+  deleteDoc, doc, serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+import {
+  getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut
+} from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDl5nP-TgnL0ma6qfV989s6C7lXoaX0mjI",
+  authDomain: "khalil-syrine.firebaseapp.com",
+  projectId: "khalil-syrine",
+  storageBucket: "khalil-syrine.firebasestorage.app",
+  messagingSenderId: "681539517174",
+  appId: "1:681539517174:web:1de5d9940a96457c5e8ad7",
+  measurementId: "G-Y1ZTPQ15XT"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+const wishForm = document.getElementById('wishForm');
+const wishesWall = document.getElementById('wishesWall');
+const adminLockBtn = document.getElementById('adminLockBtn');
+const adminPanel = document.getElementById('adminPanel');
+const adminLoginBtn = document.getElementById('adminLoginBtn');
+const adminMsg = document.getElementById('adminMsg');
+
+let isAdmin = false;
+let lastSnapshot = null;
+
+adminLockBtn.addEventListener('click', ()=>{
+  if(isAdmin){
+    signOut(auth);
+    return;
+  }
+  adminPanel.classList.toggle('open');
+});
+
+adminLoginBtn.addEventListener('click', async ()=>{
+  const email = document.getElementById('adminEmail').value.trim();
+  const pass = document.getElementById('adminPass').value;
+  try{
+    await signInWithEmailAndPassword(auth, email, pass);
+    adminMsg.textContent = '';
+  }catch(err){
+    adminMsg.textContent = 'خطأ في تسجيل الدخول، تأكد من البريد وكلمة المرور';
+  }
+});
+
+onAuthStateChanged(auth, (user)=>{
+  isAdmin = !!user;
+  wishesWall.classList.toggle('admin-mode', isAdmin);
+  adminLockBtn.textContent = isAdmin ? '🔓' : '🔒';
+  adminLockBtn.title = isAdmin ? 'تسجيل خروج' : 'دخول العروسين';
+  if(isAdmin) adminPanel.classList.remove('open');
+  if(lastSnapshot) renderWishes(lastSnapshot);
+});
+
+function renderWishes(snapshot){
+  lastSnapshot = snapshot;
+  wishesWall.innerHTML = '';
+  snapshot.forEach(docSnap=>{
+    const data = docSnap.data();
+    const card = document.createElement('div');
+    card.className = 'wish-card';
+
+    if(isAdmin){
+      const del = document.createElement('button');
+      del.className = 'wish-del';
+      del.textContent = '✕ حذف';
+      del.title = 'حذف هذه التهنئة';
+      del.addEventListener('click', async ()=>{
+        if(confirm('هل تريد حذف هذه التهنئة؟')){
+          await deleteDoc(doc(db, 'wishes', docSnap.id));
+        }
+      });
+      card.appendChild(del);
+    }
+
+    const wname = document.createElement('div');
+    wname.className = 'wname';
+    wname.textContent = data.name || '';
+    const wtext = document.createElement('div');
+    wtext.className = 'wtext';
+    wtext.textContent = data.wish || '';
+
+    card.appendChild(wname);
+    card.appendChild(wtext);
+    wishesWall.appendChild(card);
+  });
+}
+
+const wishesQuery = query(collection(db, 'wishes'), orderBy('createdAt', 'desc'));
+onSnapshot(wishesQuery, renderWishes);
+
+wishForm.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const name = document.getElementById('wish-name').value.trim();
+  const wish = document.getElementById('wish-text').value.trim();
+  if(!name || !wish) return;
+
+  try{
+    await addDoc(collection(db, 'wishes'), {
+      name, wish, createdAt: serverTimestamp()
+    });
+    wishForm.reset();
+  }catch(err){
+    alert('حدث خطأ أثناء الإرسال، حاول مرة أخرى 🌸');
+  }
+});
+</script>
+</body>
+</html>
